@@ -23,18 +23,19 @@ import {
   ShieldCheck,
   Users
 } from 'lucide-react';
+import profilePhoto from './assets/profile.svg';
 
 const translations = {
   bn: {
     nav: { home: 'হোম', about: 'সম্পর্কে', services: 'সেবা', experience: 'অভিজ্ঞতা', projects: 'প্রজেক্ট', contact: 'যোগাযোগ' },
     hero: {
       badge: 'উদ্যোক্তা ও সফটওয়্যার ডেভেলপার',
-      hello: 'হ্যালো, আমি',
-      name: 'মোঃ সিয়াম রহমান',
+      hello: 'হ্যালো, akjak আমি',
+      name: 'মোঃ সিয়াম রহমান kbjj ',
       desc: 'আমি প্রযুক্তি ব্যবহার করে বাস্তব জীবনের সমস্যার উদ্ভাবনী সমাধান তৈরি করি।',
       subDesc: "কোভিড-১৯ মহামারীর সময় 'Defense Corona' এবং 'Collegian App'-এর মতো প্রয়োজনীয় প্ল্যাটফর্ম তৈরি করার অভিজ্ঞতা নিয়ে আমি কাজ করে যাচ্ছি।",
       btnWork: 'আমার কাজ দেখুন',
-      btnCV: 'সিভি ডাউনলোড',
+      btnCV: 'সিভি ajhaডাউনলোড',
       roles: ['সফটওয়ার ডেভেলপার', 'উদ্যোক্তা', 'টেকনিক্যাল স্পেশালিস্ট', 'প্রোডাক্ট ম্যানেজার']
     },
     about: {
@@ -126,8 +127,8 @@ const translations = {
     nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
     hero: {
       badge: 'Entrepreneur & Software Developer',
-      hello: 'Hello, I am',
-      name: 'Md. Seeam Rahman',
+      hello: 'Hello, a,jbkja a kj I am',
+      name: 'Md. Seeam  agjaga Rahman',
       desc: 'I create innovative digital solutions for real-world problems using technology.',
       subDesc: "Working with the experience of creating essential platforms like 'Defense Corona' and 'Collegian App' during the COVID-19 pandemic.",
       btnWork: 'View My Work',
@@ -480,7 +481,7 @@ export default function App() {
             <div className="relative w-64 h-64 md:w-[380px] md:h-[380px] rounded-[2rem] overflow-hidden border-4 border-slate-800/80 shadow-2xl shadow-cyan-500/20 rotate-3 hover:rotate-0 transition-all duration-500 group">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 to-transparent mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
-                src="https://via.placeholder.com/380x380.png?text=Seeam+Rahman"
+                src={profilePhoto}
                 alt={t.hero.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
@@ -681,7 +682,7 @@ export default function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-6">{t.contact.title}</h2>
           <p className="text-slate-400 text-lg mb-10 leading-relaxed">{t.contact.desc}</p>
           <a href="mailto:connect.seeam@gmail.com" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-slate-900 border border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 mb-16 shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:scale-105 active:scale-95">
-            connect.seeam@gmail.com
+            baal.connect.seeam@gmail.com
           </a>
           <div className="flex flex-col items-center justify-center gap-4 text-slate-400">
             <p className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group">
