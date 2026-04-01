@@ -24,7 +24,7 @@ import {
   Users
 } from 'lucide-react';
 
-const profilePhotoUrl = 'https://instasize.com/api/image/6936ef4d9ded1e7e40df9eae3449c857c5d1696477cf9016e42d10fe9d1c321b.jpeg';
+const profilePhotoUrl = 'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187.jpg?w=718&h=479';
 
 const translations = {
   bn: {
