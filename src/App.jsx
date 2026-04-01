@@ -23,7 +23,7 @@ import {
   ShieldCheck,
   Users
 } from 'lucide-react';
-import profilePhoto from 'https://instasize.com/api/image/6936ef4d9ded1e7e40df9eae3449c857c5d1696477cf9016e42d10fe9d1c321b.jpeg';
+import profilePhoto from './assets/profile.svg';
 
 const translations = {
   bn: {
