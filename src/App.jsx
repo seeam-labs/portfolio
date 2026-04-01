@@ -433,6 +433,13 @@ export default function App() {
               {t.hero.hello} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">{t.hero.name}</span>
             </h1>
+            <div className="mb-6 text-cyan-300 font-semibold text-xl">
+              {t.hero.roles.map((role, idx) => (
+                <span key={role} className="inline-block mr-2">
+                  {role}{idx < t.hero.roles.length - 1 ? ' •' : ''}
+                </span>
+              ))}
+            </div>
             <h2 className="text-lg md:text-xl font-medium text-slate-400 mb-6 max-w-2xl leading-relaxed">
               {t.hero.desc}
             </h2>
