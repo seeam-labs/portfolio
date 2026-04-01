@@ -30,12 +30,12 @@ const translations = {
     nav: { home: 'হোম', about: 'সম্পর্কে', services: 'সেবা', experience: 'অভিজ্ঞতা', projects: 'প্রজেক্ট', contact: 'যোগাযোগ' },
     hero: {
       badge: 'উদ্যোক্তা ও সফটওয়্যার ডেভেলপার',
-      hello: 'হ্যালো, akjak আমি',
-      name: 'মোঃ সিয়াম রহমান kbjj ',
+      hello: 'হ্যালো, আমি',
+      name: 'মোঃ সিয়াম রহমান',
       desc: 'আমি প্রযুক্তি ব্যবহার করে বাস্তব জীবনের সমস্যার উদ্ভাবনী সমাধান তৈরি করি।',
       subDesc: "কোভিড-১৯ মহামারীর সময় 'Defense Corona' এবং 'Collegian App'-এর মতো প্রয়োজনীয় প্ল্যাটফর্ম তৈরি করার অভিজ্ঞতা নিয়ে আমি কাজ করে যাচ্ছি।",
       btnWork: 'আমার কাজ দেখুন',
-      btnCV: 'সিভি ajhaডাউনলোড',
+      btnCV: 'সিভি ডাউনলোড',
       roles: ['সফটওয়ার ডেভেলপার', 'উদ্যোক্তা', 'টেকনিক্যাল স্পেশালিস্ট', 'প্রোডাক্ট ম্যানেজার']
     },
     about: {
@@ -682,7 +682,7 @@ export default function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-6">{t.contact.title}</h2>
           <p className="text-slate-400 text-lg mb-10 leading-relaxed">{t.contact.desc}</p>
           <a href="mailto:connect.seeam@gmail.com" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-slate-900 border border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 mb-16 shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:scale-105 active:scale-95">
-            baal.connect.seeam@gmail.com
+            connect.seeam@gmail.com
           </a>
           <div className="flex flex-col items-center justify-center gap-4 text-slate-400">
             <p className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group">
