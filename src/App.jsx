@@ -268,9 +268,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [roleText, setRoleText] = useState('');
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const roleText = t.hero.roles[0];
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -297,30 +295,6 @@ export default function App() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const currentRole = t.hero.roles[roleIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseDelay = roleText === currentRole || (isDeleting && roleText === '') ? 3000 : typingSpeed;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && roleText === currentRole) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && roleText === '') {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % t.hero.roles.length);
-        return;
-      }
-
-      const nextLength = roleText.length + (isDeleting ? -1 : 1);
-      setRoleText(currentRole.substring(0, nextLength));
-    }, pauseDelay);
-
-    return () => clearTimeout(timeout);
-  }, [roleText, isDeleting, roleIndex, t.hero.roles]);
 
   const navLinks = [
     { name: t.nav.home, id: 'home', icon: Terminal },
