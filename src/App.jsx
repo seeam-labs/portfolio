@@ -37,7 +37,7 @@ const translations = {
       subDesc: "কোভিড-১৯ মহামারীর সময় 'Defense Corona' এবং 'Collegian App'-এর মতো প্রয়োজনীয় প্ল্যাটফর্ম তৈরি করার অভিজ্ঞতা নিয়ে আমি কাজ করে যাচ্ছি।",
       btnWork: 'আমার কাজ দেখুন',
       btnCV: 'সিভি ডাউনলোড',
-      roles: ['সফটওয়ার ডেভেলপার', 'উদ্যোক্তা', 'টেকনিক্যাল স্পেশালিস্ট', 'প্রোডাক্ট ম্যানেজার']
+      roles: ['সফটওয়ার ডেভেলপার', 'উদ্যোক্তা', 'টেকনিক্যাল স্পেশালিস্ট', 'প্রোজেক্ট ম্যানেজার']
     },
     about: {
       title: 'আমার সম্পর্কে',
@@ -134,7 +134,7 @@ const translations = {
       subDesc: "Working with the experience of creating essential platforms like 'Defense Corona' and 'Collegian App' during the COVID-19 pandemic.",
       btnWork: 'View My Work',
       btnCV: 'Download CV',
-      roles: ['Software Developer', 'Entrepreneur', 'Technical Specialist', 'Product Manager']
+      roles: ['Software Developer', 'Entrepreneur', 'Technical Specialist', 'Project Manager']
     },
     about: {
       title: 'About Me',
