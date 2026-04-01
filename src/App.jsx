@@ -23,10 +23,7 @@ import {
   ShieldCheck,
   Users
 } from 'lucide-react';
-
-
-<img src="/profile.svg?v=2" alt="Profile" />
-
+import profilePhoto from './assets/profile.svg';
 
 const translations = {
   bn: {
