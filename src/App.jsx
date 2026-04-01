@@ -301,7 +301,7 @@ export default function App() {
   useEffect(() => {
     const currentRole = t.hero.roles[roleIndex];
     const typingSpeed = isDeleting ? 50 : 100;
-    const pauseDelay = roleText === currentRole || (isDeleting && roleText === '') ? 1200 : typingSpeed;
+    const pauseDelay = roleText === currentRole || (isDeleting && roleText === '') ? 3000 : typingSpeed;
 
     const timeout = setTimeout(() => {
       if (!isDeleting && roleText === currentRole) {
