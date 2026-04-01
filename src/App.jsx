@@ -24,7 +24,9 @@ import {
   Users
 } from 'lucide-react';
 
-const profilePhoto = 'https://instasize.com/p/6936ef4d9ded1e7e40df9eae3449c857c5d1696477cf9016e42d10fe9d1c321b';
+
+<img src="/profile.svg?v=2" alt="Profile" />
+
 
 const translations = {
   bn: {
