@@ -331,8 +331,6 @@ export default function App() {
     }
   ];
 
-  const currentRole = t.hero.roles[roleIndex];
-
   const whyItems = [
     {
       icon: Zap,
