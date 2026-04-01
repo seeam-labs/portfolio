@@ -127,8 +127,8 @@ const translations = {
     nav: { home: 'Home', about: 'About', services: 'Services', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
     hero: {
       badge: 'Entrepreneur & Software Developer',
-      hello: 'Hello, a,jbkja a kj I am',
-      name: 'Md. Seeam  agjaga Rahman',
+      hello: 'Hello,',
+      name: 'I am Seeam Rahman',
       desc: 'I create innovative digital solutions for real-world problems using technology.',
       subDesc: "Working with the experience of creating essential platforms like 'Defense Corona' and 'Collegian App' during the COVID-19 pandemic.",
       btnWork: 'View My Work',
