@@ -268,9 +268,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [roleText, setRoleText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -297,30 +295,6 @@ export default function App() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const currentRole = t.hero.roles[roleIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseDelay = roleText === currentRole || (isDeleting && roleText === '') ? 1200 : typingSpeed;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && roleText === currentRole) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && roleText === '') {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % t.hero.roles.length);
-        return;
-      }
-
-      const nextLength = roleText.length + (isDeleting ? -1 : 1);
-      setRoleText(currentRole.substring(0, nextLength));
-    }, pauseDelay);
-
-    return () => clearTimeout(timeout);
-  }, [roleText, isDeleting, roleIndex, t.hero.roles]);
 
   const navLinks = [
     { name: t.nav.home, id: 'home', icon: Terminal },
@@ -357,6 +331,8 @@ export default function App() {
       style: colorStyles.green
     }
   ];
+
+  const currentRole = t.hero.roles[roleIndex];
 
   const whyItems = [
     {
@@ -460,10 +436,19 @@ export default function App() {
               {t.hero.hello} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">{t.hero.name}</span>
             </h1>
-            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-6 h-10 flex items-center">
+            <div className="text-2xl md:text-3xl font-bold text-cyan-400 mb-4 flex items-center">
               <Terminal size={24} className="mr-3 opacity-70" />
-              {roleText}
-              <span className="animate-pulse ml-1 text-slate-400">|</span>
+              {currentRole}
+            </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {t.hero.roles.map((role, idx) => (
+                <button
+                  key={role}
+                  onClick={() => setRoleIndex(idx)}
+                  className={`px-3 py-1 rounded-lg text-xs font-medium border transition ${idx === roleIndex ? 'bg-cyan-500 text-white border-cyan-400' : 'bg-slate-800 text-slate-300 border-slate-700 hover:border-cyan-400 hover:text-white'}`}>
+                  {role}
+                </button>
+              ))}
             </div>
             <h2 className="text-lg md:text-xl font-medium text-slate-400 mb-6 max-w-2xl leading-relaxed">
               {t.hero.desc}
