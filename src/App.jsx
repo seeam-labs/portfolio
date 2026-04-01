@@ -23,15 +23,15 @@ import {
   ShieldCheck,
   Users
 } from 'lucide-react';
-import profilePhoto from './assets/profile.svg';
+import profilePhoto from 'https://instasize.com/api/image/6936ef4d9ded1e7e40df9eae3449c857c5d1696477cf9016e42d10fe9d1c321b.jpeg';
 
 const translations = {
   bn: {
     nav: { home: 'হোম', about: 'সম্পর্কে', services: 'সেবা', experience: 'অভিজ্ঞতা', projects: 'প্রজেক্ট', contact: 'যোগাযোগ' },
     hero: {
       badge: 'উদ্যোক্তা ও সফটওয়্যার ডেভেলপার',
-      hello: 'হ্যালো, আমি',
-      name: 'মোঃ সিয়াম রহমান',
+      hello: 'হ্যালো,',
+      name: 'আমি সিয়াম রহমান',
       desc: 'আমি প্রযুক্তি ব্যবহার করে বাস্তব জীবনের সমস্যার উদ্ভাবনী সমাধান তৈরি করি।',
       subDesc: "কোভিড-১৯ মহামারীর সময় 'Defense Corona' এবং 'Collegian App'-এর মতো প্রয়োজনীয় প্ল্যাটফর্ম তৈরি করার অভিজ্ঞতা নিয়ে আমি কাজ করে যাচ্ছি।",
       btnWork: 'আমার কাজ দেখুন',
