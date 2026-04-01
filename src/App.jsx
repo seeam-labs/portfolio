@@ -129,7 +129,7 @@ const translations = {
     hero: {
       badge: 'Entrepreneur & Software Developer',
       hello: 'Hello,',
-      name: 'I am Seeam Rahman',
+      name: 'I am Seeam',
       desc: 'I create innovative digital solutions for real-world problems using technology.',
       subDesc: "Working with the experience of creating essential platforms like 'Defense Corona' and 'Collegian App' during the COVID-19 pandemic.",
       btnWork: 'View My Work',
