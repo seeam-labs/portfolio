@@ -268,7 +268,9 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const roleText = t.hero.roles[0];
+  const [roleText, setRoleText] = useState('');
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
