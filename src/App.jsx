@@ -482,7 +482,7 @@ export default function App() {
             <div className="relative w-64 h-64 md:w-[380px] md:h-[380px] rounded-[2rem] overflow-hidden border-4 border-slate-800/80 shadow-2xl shadow-cyan-500/20 rotate-3 hover:rotate-0 transition-all duration-500 group">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/30 to-transparent mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
-                src={profilePhoto}
+                src={profilePhotoUrl}
                 alt={t.hero.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
