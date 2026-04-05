@@ -25,7 +25,9 @@ import {
   LayoutDashboard,
   ArrowLeft
 } from 'lucide-react';
-import EcomGuide from './EcomGuide.jsx';
+import EcomToolkit from './EcomToolkit.jsx';
+import SeeamLabs from './SeeamLabs.jsx';
+
 
 const profilePhotoUrl = 'https://instasize.com/api/image/6936ef4d9ded1e7e40df9eae3449c857c5d1696477cf9016e42d10fe9d1c321b.jpeg';
 
@@ -130,7 +132,8 @@ const translations = {
     labs: {
       title: 'সিয়াম ল্যাবস',
       ecom: 'ই-কমার্স টুলকিট',
-      ecomDesc: 'আপনার ই-কমার্স ব্যবসাকে সহজ করার জন্য প্রয়োজনীয় সব টুলস এবং গাইড।'
+      ecomDesc: 'আপনার ই-কমার্স ব্যবসাকে সহজ করার জন্য প্রয়োজনীয় সব টুলস এবং গাইড।',
+      readAll: 'সব পড়ুন'
     }
   },
   en: {
@@ -233,7 +236,8 @@ const translations = {
     labs: {
       title: 'Seeam Labs',
       ecom: 'E-commerce Toolkit',
-      ecomDesc: 'All essential tools and guides to simplify your e-commerce business.'
+      ecomDesc: 'All essential tools and guides to simplify your e-commerce business.',
+      readAll: 'Read all'
     }
   }
 };
@@ -283,15 +287,49 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [view, setView] = useState('portfolio'); // 'portfolio' | 'ecom'
+  const [view, setView] = useState('portfolio'); // 'portfolio' | 'ecom' | 'labs-page'
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
+
+    // Dynamic Route Handling via Query Params
+    const params = new URLSearchParams(window.location.search);
+    const viewParam = params.get('v') || params.get('page');
+    if (viewParam === 'ecom' || viewParam === 'ecom-toolkit') {
+      setView('ecom');
+    } else if (viewParam === 'labs' || viewParam === 'seeam-labs') {
+      setView('labs-page');
+    }
+
+    window.addEventListener('popstate', () => {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get('v') || params.get('page');
+      if (v === 'ecom' || v === 'ecom-toolkit') setView('ecom');
+      else if (v === 'labs' || v === 'seeam-labs') setView('labs-page');
+      else setView('portfolio');
+    });
+
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location);
+    if (view === 'ecom') {
+      url.searchParams.set('v', 'ecom-toolkit');
+      window.history.pushState({}, '', url);
+    } else if (view === 'labs-page') {
+      url.searchParams.set('v', 'seeam-labs');
+      window.history.pushState({}, '', url);
+    } else {
+      url.searchParams.delete('v');
+      url.searchParams.delete('page');
+      const newUrl = url.search === '' ? window.location.pathname : url.href;
+      window.history.pushState({}, '', newUrl);
+    }
+  }, [view]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -695,7 +733,16 @@ export default function App() {
           <section id="labs" className="py-24 border-t border-slate-800/50">
             <div className="flex items-center gap-4 mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-100">{t.labs.title}</h2>
-              <div className="h-px bg-slate-800 flex-1 mt-2" />
+              <div className="h-px bg-slate-800 flex-1 mt-2 mx-4" />
+              <button 
+                onClick={() => {
+                  setView('labs-page');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-4 py-2 rounded-full border border-slate-700 hover:border-purple-500/50 text-slate-400 hover:text-purple-400 text-sm font-bold flex items-center gap-2 transition-all group shrink-0"
+              >
+                {t.labs.readAll} <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {labsItems.map((item, idx) => (
@@ -738,12 +785,12 @@ export default function App() {
       ) : (
         <div className="relative z-10 pt-20">
           <button 
-            onClick={() => setView('portfolio')}
+            onClick={() => setView(view === 'ecom' ? 'labs-page' : 'portfolio')}
             className="fixed top-24 left-6 z-50 bg-slate-900/80 backdrop-blur-md border border-slate-700/50 text-slate-300 hover:text-white px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-lg"
           >
             <ArrowLeft size={18} /> {lang === 'bn' ? 'ফিরে যান' : 'Back'}
           </button>
-          <EcomGuide />
+          {view === 'ecom' ? <EcomToolkit /> : <SeeamLabs setView={setView} lang={lang} />}
         </div>
       )}
 
@@ -755,25 +802,31 @@ export default function App() {
         <p className="mt-2 font-mono text-xs opacity-50">© {new Date().getFullYear()} {t.contact.rights}</p>
       </footer>
 
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 z-50 px-6 py-3.5 flex justify-between items-center shadow-[0_10px_40px_-10px_rgba(0,0,0,0.7)] rounded-full w-[90%] max-w-md transition-all duration-500 hover:bg-slate-900/80">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-950/80 backdrop-blur-2xl border border-white/10 z-50 px-2 py-2 flex justify-around items-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8)] rounded-2xl w-[95%] max-w-lg transition-all duration-500 hover:border-cyan-500/30">
         <button
           onClick={() => {
             setView('portfolio');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`relative p-2.5 rounded-full transition-all duration-300 group ${view === 'portfolio' ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-400 hover:text-cyan-300 hover:bg-white/5'}`}
-          title={t.nav.home}
+          className={`relative flex flex-col items-center gap-1.5 px-2 py-1.5 rounded-xl transition-all duration-300 group ${view === 'portfolio' ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-400 hover:text-cyan-300 hover:bg-white/5'}`}
         >
-          <Terminal size={22} className={`${view === 'portfolio' ? 'scale-110 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : 'group-hover:scale-110'} transition-transform`} />
+          <Terminal size={20} className={`${view === 'portfolio' ? 'scale-110 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : 'group-hover:scale-110'} transition-transform`} />
+          <span className="text-[9px] font-bold uppercase tracking-wider opacity-80 group-hover:opacity-100">{t.nav.home}</span>
         </button>
         
-        <div className="h-6 w-px bg-slate-700/50 mx-2" />
+        <div className="h-8 w-px bg-slate-800/50 mx-1" />
  
          {navLinks.filter(l => l.id !== 'home').map((link) => (
            <a
              key={link.id}
-             href={view === 'portfolio' ? `#${link.id}` : '#'}
+             href={link.id === 'labs' ? '?v=seeam-labs' : (view === 'portfolio' ? `#${link.id}` : '#')}
              onClick={(e) => {
+               if (link.id === 'labs') {
+                 e.preventDefault();
+                 setView('labs-page');
+                 window.scrollTo({ top: 0, behavior: 'instant' });
+                 return;
+               }
                if (view !== 'portfolio') {
                  e.preventDefault();
                  setView('portfolio');
@@ -783,10 +836,10 @@ export default function App() {
                  }, 100);
                }
              }}
-             title={link.name}
-             className={`relative p-2.5 rounded-full transition-all duration-300 group ${((activeSection === link.id && view === 'portfolio') || (link.id === 'labs' && view === 'ecom')) ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-400 hover:text-cyan-300 hover:bg-white/5'}`}
+             className={`relative flex flex-col items-center gap-1.5 px-2 py-1.5 rounded-xl transition-all duration-300 group ${((activeSection === link.id && view === 'portfolio') || (link.id === 'labs' && (view === 'ecom' || view === 'labs-page'))) ? 'text-cyan-400 bg-cyan-500/10' : 'text-slate-400 hover:text-cyan-300 hover:bg-white/5'}`}
            >
-             <link.icon size={22} className={`${((activeSection === link.id && view === 'portfolio') || (link.id === 'labs' && view === 'ecom')) ? 'scale-110 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : 'group-hover:scale-110'} transition-transform`} />
+             <link.icon size={20} className={`${((activeSection === link.id && view === 'portfolio') || (link.id === 'labs' && (view === 'ecom' || view === 'labs-page'))) ? 'scale-110 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : 'group-hover:scale-110'} transition-transform`} />
+             <span className="text-[9px] font-bold uppercase tracking-wider opacity-80 group-hover:opacity-100">{link.name}</span>
            </a>
          ))}
        </div>
